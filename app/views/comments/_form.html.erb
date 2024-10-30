@@ -1,0 +1,21 @@
+<%= form_for([@article, @article.comments.build]) do |f| %>
+    <div class="card mb-4">
+      <div class="card-header bg-light">
+        <h5>Add a Comment</h5>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <%= f.label :commenter, class: 'form-label' %>
+          <%= f.text_field :commenter, class: 'form-control', placeholder: 'Enter your name' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :body, class: 'form-label' %>
+          <%= f.text_area :body, class: 'form-control', placeholder: 'Write your comment here', rows: 4 %>
+        </div>
+        <div class="d-flex justify-content-end">
+          <%= f.submit 'Post Comment', class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  

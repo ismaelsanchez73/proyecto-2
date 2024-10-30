@@ -1,0 +1,52 @@
+<h1 class="mb-4 text-center">Listing Articles</h1>
+
+<style>
+  .table {
+    background-color: #e0f7e9; /* Fondo verde suave */
+  }
+  .table-dark {
+    background-color: #155724; /* Fondo oscuro para la cabecera */
+    color: white; /* Texto blanco en la cabecera */
+  }
+  .btn-info {
+    background-color: #17a2b8; /* Azul para el botón 'Show' */
+  }
+  .btn-warning {
+    background-color: #ffc107; /* Amarillo para el botón 'Edit' */
+  }
+  .btn-danger {
+    background-color: #dc3545; /* Rojo para el botón 'Destroy' */
+  }
+  .btn-success {
+    background-color: #28a745; /* Verde para el botón 'New Article' */
+  }
+</style>
+
+<div class="container">
+  <table class="table table-bordered table-hover text-center">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Text</th>
+        <th scope="col" colspan="3">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @articles.each do |article| %>
+        <tr>
+          <td><%= article.title %></td>
+          <td><%= article.text.truncate(50) %></td>
+          <td><%= link_to 'Show', article_path(article), class: 'btn btn-info' %></td>
+          <td><%= link_to 'Edit', edit_article_path(article), class: 'btn btn-warning' %></td>
+          <td>
+            <%= link_to 'Destroy', article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          </td>    
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="text-center">
+    <%= link_to 'New Article', new_article_path, class: 'btn btn-success my-3' %>
+  </div>
+</div>
